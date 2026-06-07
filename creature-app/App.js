@@ -3,18 +3,42 @@ import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Tung Tung Tung</Text>
-      <StatusBar style="auto" />
+    <>
+    {/* Webpage Title */}
+    <View style={styles.title}>
+      <Text style = {styles.titleText}>
+        Random Chimera Maker
+      </Text>
     </View>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
+  title: {
+    width: '100%',
     alignItems: 'center',
-    justifyContent: 'center',
+    marginTop: 50,
   },
+  titleText: {
+    flex: 1,
+    backgroundColor: '#88b65e',
+    fontSize: 30,
+    textAlign: 'center',
+    padding: 10,
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  buttonRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  outputDisplay: {
+    marginLeft: 20,
+    pading:20,
+    borderColor: 'black',
+    borderRadias: 5,
+  }
 });
