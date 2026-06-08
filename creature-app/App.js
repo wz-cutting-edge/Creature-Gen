@@ -26,15 +26,141 @@ const App = () => {
         </View>
 
         {/* Buttons */}
-        <View>
-          <View style={styles.buttonRow}>
+        <View style={styles.buttonRow}>
+          <View>
             <Button
-              title = "Body"
+              title = "Base Creature"
               onPress={generate}
               color = "#88b65e"
             />
           </View>
-          <View style={styles.outputDisplay}>
+          <View style={styles.generatedOutput}>
+            {randomName ? (
+              <Text> {randomName}</Text>
+            ):[]}
+          </View>
+        </View>
+        <View style={styles.buttonRow}>
+          <View>
+            <Button
+              title = "Head"
+              onPress={generate}
+              color = "#88b65e"
+            />
+          </View>
+          <View style={styles.generatedOutput}>
+            {randomName ? (
+              <Text> {randomName}</Text>
+            ):[]}
+          </View>
+        </View>
+        <View style={styles.buttonRow}>
+          <View>
+            <Button
+              title = "Ears"
+              onPress={generate}
+              color = "#88b65e"
+            />
+          </View>
+          <View style={styles.generatedOutput}>
+            {randomName ? (
+              <Text> {randomName}</Text>
+            ):[]}
+          </View>
+        </View>
+        <View style={styles.buttonRow}>
+          <View>
+            <Button
+              title = "Eyes"
+              onPress={generate}
+              color = "#88b65e"
+            />
+          </View>
+          <View style={styles.generatedOutput}>
+            {randomName ? (
+              <Text> {randomName}</Text>
+            ):[]}
+          </View>
+        </View>
+        <View style={styles.buttonRow}>
+          <View>
+            <Button
+              title = "Nose"
+              onPress={generate}
+              color = "#88b65e"
+            />
+          </View>
+          <View style={styles.generatedOutput}>
+            {randomName ? (
+              <Text> {randomName}</Text>
+            ):[]}
+          </View>
+        </View>
+        <View style={styles.buttonRow}>
+          <View>
+            <Button
+              title = "Legs"
+              onPress={generate}
+              color = "#88b65e"
+            />
+          </View>
+          <View style={styles.generatedOutput}>
+            {randomName ? (
+              <Text> {randomName}</Text>
+            ):[]}
+          </View>
+        </View>
+        <View style={styles.buttonRow}>
+          <View>
+            <Button
+              title = "Feet"
+              onPress={generate}
+              color = "#88b65e"
+            />
+          </View>
+          <View style={styles.generatedOutput}>
+            {randomName ? (
+              <Text> {randomName}</Text>
+            ):[]}
+          </View>
+        </View>
+        <View style={styles.buttonRow}>
+          <View>
+            <Button
+              title = "Tail"
+              onPress={generate}
+              color = "#88b65e"
+            />
+          </View>
+          <View style={styles.generatedOutput}>
+            {randomName ? (
+              <Text> {randomName}</Text>
+            ):[]}
+          </View>
+        </View>
+        <View style={styles.buttonRow}>
+          <View>
+            <Button
+              title = "Coat"
+              onPress={generate}
+              color = "#88b65e"
+            />
+          </View>
+          <View style={styles.generatedOutput}>
+            {randomName ? (
+              <Text> {randomName}</Text>
+            ):[]}
+          </View>
+        </View>
+        <View style={styles.buttonRow}>
+          <View>
+            <Button
+              title = "Color"
+              onPress={generate}
+              color = "#88b65e"
+            />
+          </View>
+          <View style={styles.generatedOutput}>
             {randomName ? (
               <Text> {randomName}</Text>
             ):[]}
@@ -78,10 +204,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   buttonRow: {
+    display: 'flex',
+    justifyContent: 'left',
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 20,
-    marginBottom: 20,
+    padding:10,
+
+  },
+  generatedOutput: {
+    border: '1px solid black',
+    borderRadius: 5,
+    padding:10,
   },
   outputDisplay: {
     marginLeft: 20,
