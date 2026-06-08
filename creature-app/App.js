@@ -1,15 +1,27 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button} from 'react-native';
 
 export default function App() {
   return (
     <>
     {/* Webpage Title */}
     <View style={styles.title}>
-      <Text style = {styles.titleText}>
+      <Text style={styles.titleText}>
         Random Chimera Maker
       </Text>
     </View>
+
+    <View style={styles.buttonRow}>
+      <Button>
+        title = "Body"
+        onPress {() => showAlert('Body Button pressed')}
+        color = "#88b65e"
+      </Button>
+    </View>
+
+      <View style={styles.buttonRow}>
+        <Button title="Generate Chimera" />
+      </View>
     </>
   );
 }
@@ -17,6 +29,7 @@ export default function App() {
 const styles = StyleSheet.create({
   title: {
     width: '100%',
+    height: '50px',
     alignItems: 'center',
     marginTop: 50,
   },
