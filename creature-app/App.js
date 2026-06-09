@@ -82,9 +82,6 @@ const App = () => {
           <Text style={styles.titleText}>
             Random Chimera Maker
           </Text>
-          <Text style={styles.titleSubText}>
-            Made By Aidyn, Anthony, James, and William
-          </Text>
         </View>
 
         {/* Buttons */}
