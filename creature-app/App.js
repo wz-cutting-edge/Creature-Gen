@@ -14,6 +14,22 @@ const App = () => {
   const [randomTail, setRandomTail]=useState("");
   const [randomCoat, setRandomCoat]=useState("");
   const [randomColor, setRandomColor]=useState("");
+  const [randomExtras, setRandomExtras]=useState("");
+  const extras = [
+    "unicorn horn", "nose horn", "reindeer antlers", "long eyelashes",
+    "huge ears", "cactus spikes", "huge eyes", "piebaldism", "insect antennae", "moose antlers",
+    "bee stinger", "glowing eyes", "iridescence", "long whiskers", "fangs", "extra eyes",
+    "sheep horns", "albinism", "melanism", "spines along the back", "bioluminescent",
+    "erythrism", "heterochromia", "leucism", "xanthochromish", "hairless", "embedded gems", "plants", "mushrooms",
+    "alien antennae", "sparkles", "ear tufts", "dragon wings", "bird wings", "multiple tails", "long claws", "mane",
+    "fluffy cheeks", "fluffy ears", "colourful spots", "colourful stripes", "tusks", "roe deer antlers", "slime",
+    "ankole watusi horns", "gills", "anglerfish lure", "crest feathers", "none"
+  ];
+  const generateExtras = () =>{
+    const randomIndex = Math.floor(Math.random() * extras.length);
+    setRandomExtras(extras[randomIndex]);
+  }
+
   const animalArray = Object.values(creatures.AnimalName);
   
   const generateBase = () =>{
@@ -231,6 +247,22 @@ const App = () => {
                 <Text> {randomColor}</Text>
               ):[]}
             </View>
+          </View>
+        </View>
+        
+        {/* Extras Button */}
+        <View style={styles.buttonRow}>
+          <View>
+            <Button
+              title = "Extras"
+              onPress={generateExtras}
+              color = "#88b65e"
+            />
+          </View>
+          <View style={styles.generatedOutput}>
+            {randomExtras ? (
+              <Text> {randomExtras}</Text>
+            ):[]}
           </View>
         </View>
         
