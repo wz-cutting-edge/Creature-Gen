@@ -4,11 +4,57 @@ import { StyleSheet, Text, View, Button} from 'react-native';
 import creatures from 'creature-app/creatures.json';
 
 const App = () => {
-  const [randomName, setRandomName]=useState("");
+  const [randomBase, setRandomBase]=useState("");
+  const [randomHead, setRandomHead]=useState("");
+  const [randomEars, setRandomEars]=useState("");
+  const [randomEyes, setRandomEyes]=useState("");
+  const [randomNose, setRandomNose]=useState("");
+  const [randomLegs, setRandomLegs]=useState("");
+  const [randomFeet, setRandomFeet]=useState("");
+  const [randomTail, setRandomTail]=useState("");
+  const [randomCoat, setRandomCoat]=useState("");
+  const [randomColor, setRandomColor]=useState("");
   const animalArray = Object.values(creatures.AnimalName);
-  const generate = () =>{
+  
+  const generateBase = () =>{
     const randomIndex = Math.floor(Math.random() * animalArray.length);
-    setRandomName(animalArray[randomIndex]);
+    setRandomBase(animalArray[randomIndex]);
+  }
+  const generateHead = () =>{
+    const randomIndex = Math.floor(Math.random() * animalArray.length);
+    setRandomHead(animalArray[randomIndex]);
+  }
+  const generateEars = () =>{
+    const randomIndex = Math.floor(Math.random() * animalArray.length);
+    setRandomEars(animalArray[randomIndex]);
+  }
+  const generateEyes = () =>{
+    const randomIndex = Math.floor(Math.random() * animalArray.length);
+    setRandomEyes(animalArray[randomIndex]);
+  }
+  const generateNose = () =>{
+    const randomIndex = Math.floor(Math.random() * animalArray.length);
+    setRandomNose(animalArray[randomIndex]);
+  }
+  const generateLegs = () =>{
+    const randomIndex = Math.floor(Math.random() * animalArray.length);
+    setRandomLegs(animalArray[randomIndex]);
+  }
+  const generateFeet = () =>{
+    const randomIndex = Math.floor(Math.random() * animalArray.length);
+    setRandomFeet(animalArray[randomIndex]);
+  }
+  const generateTail = () =>{
+    const randomIndex = Math.floor(Math.random() * animalArray.length);
+    setRandomTail(animalArray[randomIndex]);
+  }
+  const generateCoat = () =>{
+    const randomIndex = Math.floor(Math.random() * animalArray.length);
+    setRandomCoat(animalArray[randomIndex]);
+  }
+  const generateColor = () =>{
+    const randomIndex = Math.floor(Math.random() * animalArray.length);
+    setRandomColor(animalArray[randomIndex]);
   }
   return (
     <>
@@ -25,144 +71,162 @@ const App = () => {
           </Text>
         </View>
 
-        {/* Buttons */}
+        {/* Base Creature Button */}
         <View style={styles.buttonRow}>
           <View>
             <Button
               title = "Base Creature"
-              onPress={generate}
+              onPress={generateBase}
               color = "#88b65e"
             />
           </View>
           <View style={styles.generatedOutput}>
-            {randomName ? (
-              <Text> {randomName}</Text>
+            {randomBase ? (
+              <Text> {randomBase}</Text>
             ):[]}
           </View>
         </View>
+        
+        {/* Head Button */}
         <View style={styles.buttonRow}>
           <View>
             <Button
               title = "Head"
-              onPress={generate}
+              onPress={generateHead}
               color = "#88b65e"
             />
           </View>
           <View style={styles.generatedOutput}>
-            {randomName ? (
-              <Text> {randomName}</Text>
+            {randomHead ? (
+              <Text> {randomHead}</Text>
             ):[]}
           </View>
         </View>
+        
+        {/* Ears Button */}
         <View style={styles.buttonRow}>
           <View>
             <Button
               title = "Ears"
-              onPress={generate}
+              onPress={generateEars}
               color = "#88b65e"
             />
           </View>
           <View style={styles.generatedOutput}>
-            {randomName ? (
-              <Text> {randomName}</Text>
+            {randomEars ? (
+              <Text> {randomEars}</Text>
             ):[]}
           </View>
         </View>
+        
+        {/* Eyes Button */}
         <View style={styles.buttonRow}>
           <View>
             <Button
               title = "Eyes"
-              onPress={generate}
+              onPress={generateEyes}
               color = "#88b65e"
             />
           </View>
           <View style={styles.generatedOutput}>
-            {randomName ? (
-              <Text> {randomName}</Text>
+            {randomEyes ? (
+              <Text> {randomEyes}</Text>
             ):[]}
           </View>
         </View>
+        
+        {/* Nose Button */}
         <View style={styles.buttonRow}>
           <View>
             <Button
               title = "Nose"
-              onPress={generate}
+              onPress={generateNose}
               color = "#88b65e"
             />
           </View>
           <View style={styles.generatedOutput}>
-            {randomName ? (
-              <Text> {randomName}</Text>
+            {randomNose ? (
+              <Text> {randomNose}</Text>
             ):[]}
           </View>
         </View>
+        
+        {/* Legs Button */}
         <View style={styles.buttonRow}>
           <View>
             <Button
               title = "Legs"
-              onPress={generate}
+              onPress={generateLegs}
               color = "#88b65e"
             />
           </View>
           <View style={styles.generatedOutput}>
-            {randomName ? (
-              <Text> {randomName}</Text>
+            {randomLegs ? (
+              <Text> {randomLegs}</Text>
             ):[]}
           </View>
         </View>
+        
+        {/* Feet Button */}
         <View style={styles.buttonRow}>
           <View>
             <Button
               title = "Feet"
-              onPress={generate}
+              onPress={generateFeet}
               color = "#88b65e"
             />
           </View>
           <View style={styles.generatedOutput}>
-            {randomName ? (
-              <Text> {randomName}</Text>
+            {randomFeet ? (
+                <Text> {randomFeet}</Text>
             ):[]}
           </View>
         </View>
+        
+        {/* Tail Button */}
         <View style={styles.buttonRow}>
           <View>
             <Button
               title = "Tail"
-              onPress={generate}
+              onPress={generateTail}
               color = "#88b65e"
             />
           </View>
           <View style={styles.generatedOutput}>
-            {randomName ? (
-              <Text> {randomName}</Text>
+            {randomTail ? (
+              <Text> {randomTail}</Text>
             ):[]}
           </View>
         </View>
+        
+        {/* Coat Button */}
         <View style={styles.buttonRow}>
           <View>
             <Button
               title = "Coat"
-              onPress={generate}
+              onPress={generateCoat}
               color = "#88b65e"
             />
           </View>
           <View style={styles.generatedOutput}>
-            {randomName ? (
-              <Text> {randomName}</Text>
+            {randomCoat ? (
+              <Text> {randomCoat}</Text>
             ):[]}
           </View>
         </View>
+       
+        {/* Color Button */}
         <View style={styles.buttonRow}>
           <View>
             <Button
               title = "Color"
-              onPress={generate}
+              onPress={generateColor}
               color = "#88b65e"
             />
           </View>
           <View style={styles.generatedOutput}>
-            {randomName ? (
-              <Text> {randomName}</Text>
+            {randomColor ? (
+              <Text> {randomColor}</Text>
             ):[]}
           </View>
         </View>
