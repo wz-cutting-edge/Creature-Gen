@@ -58,182 +58,187 @@ const App = () => {
   }
   return (
     <>
-      <View style={styles.container}>
-        {/* Header */}
-        <View>
-            <Text>Made By Aidyn, Anthony, James, and William</Text>
-        </View>
-        
+      {/* Main Container */}
+      <View style={styles.mainContainer}>
+
         {/* Webpage Title */}
-        <View style={styles.title}>
+        <View style={styles.titleContainer}>
           <Text style={styles.titleText}>
             Random Chimera Maker
           </Text>
+          <Text style={styles.titleSubText}>
+            Made By Aidyn, Anthony, James, and William
+          </Text>
         </View>
 
-        {/* Base Creature Button */}
-        <View style={styles.buttonRow}>
-          <View>
-            <Button
-              title = "Base Creature"
-              onPress={generateBase}
-              color = "#88b65e"
-            />
+        {/* Buttons */}
+        <View style={styles.buttonContainer}>
+          {/* Base Creature Button */}
+          <View style={styles.buttonRow}>
+            <View>
+              <Button 
+                title = "Base Creature"
+                onPress={generateBase}
+                color = "#88b65e"
+              />
+            </View>
+            <View style={styles.generatedOutput}>
+              {randomBase ? (
+                <Text> {randomBase}</Text>
+              ):[]}
+            </View>
           </View>
-          <View style={styles.generatedOutput}>
-            {randomBase ? (
-              <Text> {randomBase}</Text>
-            ):[]}
-          </View>
-        </View>
         
-        {/* Head Button */}
-        <View style={styles.buttonRow}>
-          <View>
-            <Button
-              title = "Head"
-              onPress={generateHead}
-              color = "#88b65e"
-            />
+          {/* Head Button */}
+          <View style={styles.buttonRow}>
+            <View>
+              <Button
+                title = "Head"
+                onPress={generateHead}
+                color = "#88b65e"
+              />
+            </View>
+            <View style={styles.generatedOutput}>
+              {randomHead ? (
+                <Text> {randomHead}</Text>
+              ):[]}
+            </View>
           </View>
-          <View style={styles.generatedOutput}>
-            {randomHead ? (
-              <Text> {randomHead}</Text>
-            ):[]}
-          </View>
-        </View>
         
-        {/* Ears Button */}
-        <View style={styles.buttonRow}>
-          <View>
-            <Button
-              title = "Ears"
-              onPress={generateEars}
-              color = "#88b65e"
-            />
+          {/* Ears Button */}
+          <View style={styles.buttonRow}>
+            <View>
+              <Button
+                title = "Ears"
+                onPress={generateEars}
+                color = "#88b65e"
+              />
+            </View>
+            <View style={styles.generatedOutput}>
+              {randomEars ? (
+                <Text> {randomEars}</Text>
+              ):[]}
+            </View>
           </View>
-          <View style={styles.generatedOutput}>
-            {randomEars ? (
-              <Text> {randomEars}</Text>
-            ):[]}
-          </View>
-        </View>
         
-        {/* Eyes Button */}
-        <View style={styles.buttonRow}>
-          <View>
-            <Button
-              title = "Eyes"
-              onPress={generateEyes}
-              color = "#88b65e"
-            />
+          {/* Eyes Button */}
+          <View style={styles.buttonRow}>
+            <View>
+              <Button
+                title = "Eyes"
+                onPress={generateEyes}
+                color = "#88b65e"
+              />
+            </View>
+            <View style={styles.generatedOutput}>
+              {randomEyes ? (
+                <Text> {randomEyes}</Text>
+              ):[]}
+            </View>
           </View>
-          <View style={styles.generatedOutput}>
-            {randomEyes ? (
-              <Text> {randomEyes}</Text>
-            ):[]}
-          </View>
-        </View>
         
-        {/* Nose Button */}
-        <View style={styles.buttonRow}>
-          <View>
-            <Button
-              title = "Nose"
-              onPress={generateNose}
-              color = "#88b65e"
-            />
+          {/* Nose Button */}
+          <View style={styles.buttonRow}>
+            <View>
+              <Button
+                title = "Nose"
+                onPress={generateNose}
+                color = "#88b65e"
+              />
+            </View>
+            <View style={styles.generatedOutput}>
+              {randomNose ? (
+                <Text> {randomNose}</Text>
+              ):[]}
+            </View>
           </View>
-          <View style={styles.generatedOutput}>
-            {randomNose ? (
-              <Text> {randomNose}</Text>
-            ):[]}
-          </View>
-        </View>
         
-        {/* Legs Button */}
-        <View style={styles.buttonRow}>
-          <View>
-            <Button
-              title = "Legs"
-              onPress={generateLegs}
-              color = "#88b65e"
-            />
+          {/* Legs Button */}
+          <View style={styles.buttonRow}>
+            <View>
+              <Button
+                title = "Legs"
+                onPress={generateLegs}
+                color = "#88b65e"
+              />
+            </View>
+            <View style={styles.generatedOutput}>
+              {randomLegs ? (
+                <Text> {randomLegs}</Text>
+              ):[]}
+            </View>
           </View>
-          <View style={styles.generatedOutput}>
-            {randomLegs ? (
-              <Text> {randomLegs}</Text>
-            ):[]}
-          </View>
-        </View>
         
-        {/* Feet Button */}
-        <View style={styles.buttonRow}>
-          <View>
-            <Button
-              title = "Feet"
-              onPress={generateFeet}
-              color = "#88b65e"
-            />
+          {/* Feet Button */}
+          <View style={styles.buttonRow}>
+            <View>
+              <Button
+                title = "Feet"
+                onPress={generateFeet}
+                color = "#88b65e"
+              />
+            </View>
+            <View style={styles.generatedOutput}>
+              {randomFeet ? (
+                  <Text> {randomFeet}</Text>
+              ):[]}
+            </View>
           </View>
-          <View style={styles.generatedOutput}>
-            {randomFeet ? (
-                <Text> {randomFeet}</Text>
-            ):[]}
-          </View>
-        </View>
         
-        {/* Tail Button */}
-        <View style={styles.buttonRow}>
-          <View>
-            <Button
-              title = "Tail"
-              onPress={generateTail}
-              color = "#88b65e"
-            />
+          {/* Tail Button */}
+          <View style={styles.buttonRow}>
+            <View>
+              <Button
+                title = "Tail"
+                onPress={generateTail}
+                color = "#88b65e"
+              />
+            </View>
+            <View style={styles.generatedOutput}>
+              {randomTail ? (
+                <Text> {randomTail}</Text>
+              ):[]}
+            </View>
           </View>
-          <View style={styles.generatedOutput}>
-            {randomTail ? (
-              <Text> {randomTail}</Text>
-            ):[]}
-          </View>
-        </View>
         
-        {/* Coat Button */}
-        <View style={styles.buttonRow}>
-          <View>
-            <Button
-              title = "Coat"
-              onPress={generateCoat}
-              color = "#88b65e"
-            />
+          {/* Coat Button */}
+          <View style={styles.buttonRow}>
+            <View>
+              <Button
+                title = "Coat"
+                onPress={generateCoat}
+                color = "#88b65e"
+              />
+            </View>
+            <View style={styles.generatedOutput}>
+              {randomCoat ? (
+                <Text> {randomCoat}</Text>
+              ):[]}
+            </View>
           </View>
-          <View style={styles.generatedOutput}>
-            {randomCoat ? (
-              <Text> {randomCoat}</Text>
-            ):[]}
-          </View>
-        </View>
-       
-        {/* Color Button */}
-        <View style={styles.buttonRow}>
-          <View>
-            <Button
-              title = "Color"
-              onPress={generateColor}
-              color = "#88b65e"
-            />
-          </View>
-          <View style={styles.generatedOutput}>
-            {randomColor ? (
-              <Text> {randomColor}</Text>
-            ):[]}
+        
+          {/* Color Button */}
+          <View style={styles.buttonRow}>
+            <View>
+              <Button
+                title = "Color"
+                onPress={generateColor}
+                color = "#88b65e"
+              />
+            </View>
+            <View style={styles.generatedOutput}>
+              {randomColor ? (
+                <Text> {randomColor}</Text>
+              ):[]}
+            </View>
           </View>
         </View>
         
         {/* Footer */}
         <View style={styles.footer}>
-          <Text>©FP, Inc.</Text>
+          <Text style={styles.footerText}>
+            ©2026 FP, Inc. - All Rights Reserved
+          </Text>
         </View>
       </View>
     </>
@@ -243,20 +248,18 @@ const App = () => {
 export default App;
 
 const styles = StyleSheet.create({
-  container: {
+  mainContainer: {
     height: '100%',
     width: '100%',
+    backgroundColor: 'beige',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  titleContainer: {
+    display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
-  },
-  header: {
-    position: 'relative',
-  },
-  title: {
-    width: '100%',
-    height: '50px',
-    alignItems: 'center',
-    marginTop: 50,
+    marginTop: 10,
   },
   titleText: {
     backgroundColor: '#88b65e',
@@ -267,17 +270,26 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
+  titleSubText: {
+    textAlign: 'center',
+    marginTop: 35,
+  },
+  buttonContainer: {
+    border: 10,
+  },
   buttonRow: {
     display: 'flex',
-    justifyContent: 'left',
+    justifyContent: 'space-between',
     flexDirection: 'row',
     alignItems: 'center',
-    padding:10,
-
+    width: 400,
+    height: 54,
+    padding: 10,
+    backgroundColor: 'white',
+    marginBottom: 10,
+    borderRadius: 15,
   },
   generatedOutput: {
-    border: '1px solid black',
-    borderRadius: 5,
     padding:10,
   },
   outputDisplay: {
@@ -287,9 +299,12 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   footer: {
-    position: 'relative',
-    left: 0,
-    bottom: 0,
-    right: 0,
+    width: '100%',
+    paddingBottom: 10,
+    paddingTop: 10,
+    backgroundColor: '#88b65e',
+  },
+  footerText: {
+    textAlign: 'center',
   }
 });
