@@ -25,11 +25,7 @@ const App = () => {
     "Fluffy Cheeks", "Fluffy Ears", "Colourful Spots", "Colourful Stripes", "Tusks", "Roe Deer Antlers", "Slime",
     "Ankole Watusi Horns", "Gills", "Anglerfish Lure", "Crest Feathers", "None"
   ];
-  const generateExtras = () =>{
-    const randomIndex = Math.floor(Math.random() * extras.length);
-    setRandomExtras(extras[randomIndex]);
-  }
-
+  
   const animalArray = Object.values(creatures.AnimalName);
   
   const generateBase = () =>{
@@ -71,6 +67,10 @@ const App = () => {
   const generateColor = () =>{
     const randomIndex = Math.floor(Math.random() * animalArray.length);
     setRandomColor(animalArray[randomIndex]);
+  }
+  const generateExtras = () =>{
+    const randomIndex = Math.floor(Math.random() * extras.length);
+    setRandomExtras(extras[randomIndex]);
   }
   return (
     <>
