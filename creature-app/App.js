@@ -16,20 +16,16 @@ const App = () => {
   const [randomColor, setRandomColor]=useState("");
   const [randomExtras, setRandomExtras]=useState("");
   const extras = [
-    "unicorn horn", "nose horn", "reindeer antlers", "long eyelashes",
-    "huge ears", "cactus spikes", "huge eyes", "piebaldism", "insect antennae", "moose antlers",
-    "bee stinger", "glowing eyes", "iridescence", "long whiskers", "fangs", "extra eyes",
-    "sheep horns", "albinism", "melanism", "spines along the back", "bioluminescent",
-    "erythrism", "heterochromia", "leucism", "xanthochromish", "hairless", "embedded gems", "plants", "mushrooms",
-    "alien antennae", "sparkles", "ear tufts", "dragon wings", "bird wings", "multiple tails", "long claws", "mane",
-    "fluffy cheeks", "fluffy ears", "colourful spots", "colourful stripes", "tusks", "roe deer antlers", "slime",
-    "ankole watusi horns", "gills", "anglerfish lure", "crest feathers", "none"
+    "Unicorn Horn", "Nose Horn", "Reindeer Antlers", "Long Eyelashes",
+    "Huge Ears", "Cactus Spikes", "Huge Eyes", "Piebaldism", "Insect Antennae", "Moose Antlers",
+    "Bee Stinger", "Glowing Eyes", "Iridescence", "Long Whiskers", "Fangs", "Extra Eyes",
+    "Sheep Horns", "Albinism", "Melanism", "Spines Along The Back", "Bioluminescent",
+    "Erythrism", "Heterochromia", "Leucism", "Xanthochromish", "Hairless", "Embedded Gems", "Plants", "Mushrooms",
+    "Alien Antennae", "Sparkles", "Ear Tufts", "Dragon Wings", "Bird Wings", "Multiple Tails", "Long Claws", "Mane",
+    "Fluffy Cheeks", "Fluffy Ears", "Colourful Spots", "Colourful Stripes", "Tusks", "Roe Deer Antlers", "Slime",
+    "Ankole Watusi Horns", "Gills", "Anglerfish Lure", "Crest Feathers", "None"
   ];
-  const generateExtras = () =>{
-    const randomIndex = Math.floor(Math.random() * extras.length);
-    setRandomExtras(extras[randomIndex]);
-  }
-
+  
   const animalArray = Object.values(creatures.AnimalName);
   
   const generateBase = () =>{
@@ -72,6 +68,10 @@ const App = () => {
     const randomIndex = Math.floor(Math.random() * animalArray.length);
     setRandomColor(animalArray[randomIndex]);
   }
+  const generateExtras = () =>{
+    const randomIndex = Math.floor(Math.random() * extras.length);
+    setRandomExtras(extras[randomIndex]);
+  }
   return (
     <>
       {/* Main Container */}
@@ -81,9 +81,6 @@ const App = () => {
         <View style={styles.titleContainer}>
           <Text style={styles.titleText}>
             Random Chimera Maker
-          </Text>
-          <Text style={styles.titleSubText}>
-            Made By Aidyn, Anthony, James, and William
           </Text>
         </View>
 
@@ -248,21 +245,21 @@ const App = () => {
               ):[]}
             </View>
           </View>
-        </View>
-        
-        {/* Extras Button */}
-        <View style={styles.buttonRow}>
-          <View>
-            <Button
-              title = "Extras"
-              onPress={generateExtras}
-              color = "#88b65e"
-            />
-          </View>
-          <View style={styles.generatedOutput}>
-            {randomExtras ? (
-              <Text> {randomExtras}</Text>
-            ):[]}
+
+          {/* Extras Button */}
+          <View style={styles.buttonRow}>
+            <View>
+              <Button
+                title = "Extras"
+                onPress={generateExtras}
+                color = "#88b65e"
+              />
+            </View>
+            <View style={styles.generatedOutput}>
+              {randomExtras ? (
+                <Text> {randomExtras}</Text>
+              ):[]}
+            </View>
           </View>
         </View>
         
@@ -304,7 +301,7 @@ const styles = StyleSheet.create({
   },
   titleSubText: {
     textAlign: 'center',
-    marginTop: 35,
+    marginTop: 15,
   },
   buttonContainer: {
     border: 10,
