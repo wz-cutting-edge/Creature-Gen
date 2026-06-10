@@ -90,7 +90,7 @@ const App = () => {
             </View>
             <View>
               <Image
-                source={{ uri: randomBase.images?.medium || randomBase.taxon_photo }}
+                source={{ uri: randomBase.image_square_url }}
               />
             </View>
           </View>
@@ -109,6 +109,11 @@ const App = () => {
                 <Text> {randomHead.common_name}</Text>
               ):[]}
             </View>
+            <View>
+              <Image
+                source={{ uri: randomHead.image_square_url }}
+              />
+            </View>
           </View>
         
           {/* Ears Button */}
@@ -124,6 +129,11 @@ const App = () => {
               {randomEars ? (
                 <Text> {randomEars.common_name}</Text>
               ):[]}
+            </View>
+            <View>
+              <Image
+                source={{ uri: randomEars.image_square_url }}
+              />
             </View>
           </View>
         
@@ -141,6 +151,11 @@ const App = () => {
                 <Text> {randomEyes.common_name}</Text>
               ):[]}
             </View>
+            <View>
+              <Image
+                source={{ uri: randomEyes.image_square_url }}
+              />
+            </View>
           </View>
         
           {/* Nose Button */}
@@ -156,6 +171,11 @@ const App = () => {
               {randomNose ? (
                 <Text> {randomNose.common_name}</Text>
               ):[]}
+            </View>
+            <View>
+              <Image
+                source={{ uri: randomNose.image_square_url }}
+              />
             </View>
           </View>
         
@@ -173,6 +193,11 @@ const App = () => {
                 <Text> {randomLegs.common_name}</Text>
               ):[]}
             </View>
+            <View>
+              <Image
+                source={{ uri: randomLegs.image_square_url }}
+              />
+            </View>
           </View>
         
           {/* Feet Button */}
@@ -188,6 +213,11 @@ const App = () => {
               {randomFeet ? (
                   <Text> {randomFeet.common_name}</Text>
               ):[]}
+            </View>
+            <View>
+              <Image
+                source={{ uri: randomFeet.image_square_url }}
+              />
             </View>
           </View>
         
@@ -205,6 +235,11 @@ const App = () => {
                 <Text> {randomTail.common_name}</Text>
               ):[]}
             </View>
+            <View>
+              <Image
+                source={{ uri: randomTail.image_square_url }}
+              />
+            </View>
           </View>
         
           {/* Coat Button */}
@@ -221,6 +256,11 @@ const App = () => {
                 <Text> {randomCoat.common_name}</Text>
               ):[]}
             </View>
+            <View>
+              <Image
+                source={{ uri: randomCoat.image_square_url }}
+              />
+            </View>
           </View>
         
           {/* Color Button */}
@@ -236,6 +276,11 @@ const App = () => {
               {randomColor ? (
                 <Text> {randomColor.common_name}</Text>
               ):[]}
+            </View>
+            <View>
+              <Image
+                source={{ uri: randomColor.image_square_url }}
+              />
             </View>
           </View>
 
