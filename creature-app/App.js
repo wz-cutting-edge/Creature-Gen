@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import {useState} from 'react';
-import { StyleSheet, Text, View, Button} from 'react-native';
-import creatures from 'creature-app/creatures.json';
+import { StyleSheet, Text, View, Button, Image} from 'react-native';
+import animals from 'creature-app/animals.json';
 
 const App = () => {
   const [randomBase, setRandomBase]=useState("");
@@ -26,47 +26,36 @@ const App = () => {
     "Ankole Watusi Horns", "Gills", "Anglerfish Lure", "Crest Feathers", "None"
   ];
   
-  const animalArray = Object.values(creatures.AnimalName);
-  
   const generateBase = () =>{
-    const randomIndex = Math.floor(Math.random() * animalArray.length);
-    setRandomBase(animalArray[randomIndex]);
+    setRandomBase(animals[Math.floor(Math.random() * animals.length)]);
   }
   const generateHead = () =>{
-    const randomIndex = Math.floor(Math.random() * animalArray.length);
-    setRandomHead(animalArray[randomIndex]);
+    setRandomHead(animals[Math.floor(Math.random() * animals.length)]);
   }
   const generateEars = () =>{
-    const randomIndex = Math.floor(Math.random() * animalArray.length);
-    setRandomEars(animalArray[randomIndex]);
+    setRandomEars(animals[Math.floor(Math.random() * animals.length)]);
   }
   const generateEyes = () =>{
-    const randomIndex = Math.floor(Math.random() * animalArray.length);
-    setRandomEyes(animalArray[randomIndex]);
+    setRandomEyes(animals[Math.floor(Math.random() * animals.length)]);
   }
   const generateNose = () =>{
-    const randomIndex = Math.floor(Math.random() * animalArray.length);
-    setRandomNose(animalArray[randomIndex]);
+    setRandomNose(animals[Math.floor(Math.random() * animals.length)]);
   }
   const generateLegs = () =>{
-    const randomIndex = Math.floor(Math.random() * animalArray.length);
-    setRandomLegs(animalArray[randomIndex]);
+    setRandomLegs(animals[Math.floor(Math.random() * animals.length)]);
   }
   const generateFeet = () =>{
-    const randomIndex = Math.floor(Math.random() * animalArray.length);
-    setRandomFeet(animalArray[randomIndex]);
+    setRandomFeet(animals[Math.floor(Math.random() * animals.length)]);
   }
   const generateTail = () =>{
-    const randomIndex = Math.floor(Math.random() * animalArray.length);
-    setRandomTail(animalArray[randomIndex]);
+    setRandomTail(animals[Math.floor(Math.random() * animals.length)]);
   }
   const generateCoat = () =>{
-    const randomIndex = Math.floor(Math.random() * animalArray.length);
-    setRandomCoat(animalArray[randomIndex]);
+    setRandomCoat(animals[Math.floor(Math.random() * animals.length)]);
   }
   const generateColor = () =>{
-    const randomIndex = Math.floor(Math.random() * animalArray.length);
-    setRandomColor(animalArray[randomIndex]);
+
+    setRandomColor(animals[Math.floor(Math.random() * animals.length)]);
   }
   const generateExtras = () =>{
     const randomIndex = Math.floor(Math.random() * extras.length);
@@ -76,7 +65,6 @@ const App = () => {
     <>
       {/* Main Container */}
       <View style={styles.mainContainer}>
-
         {/* Webpage Title */}
         <View style={styles.titleContainer}>
           <Text style={styles.titleText}>
@@ -97,8 +85,13 @@ const App = () => {
             </View>
             <View style={styles.generatedOutput}>
               {randomBase ? (
-                <Text> {randomBase}</Text>
+                <Text> {randomBase.common_name}</Text>
               ):[]}
+            </View>
+            <View>
+              <Image
+                source={{ uri: randomBase.images?.medium || randomBase.taxon_photo }}
+              />
             </View>
           </View>
         
@@ -113,7 +106,7 @@ const App = () => {
             </View>
             <View style={styles.generatedOutput}>
               {randomHead ? (
-                <Text> {randomHead}</Text>
+                <Text> {randomHead.common_name}</Text>
               ):[]}
             </View>
           </View>
@@ -129,7 +122,7 @@ const App = () => {
             </View>
             <View style={styles.generatedOutput}>
               {randomEars ? (
-                <Text> {randomEars}</Text>
+                <Text> {randomEars.common_name}</Text>
               ):[]}
             </View>
           </View>
@@ -145,7 +138,7 @@ const App = () => {
             </View>
             <View style={styles.generatedOutput}>
               {randomEyes ? (
-                <Text> {randomEyes}</Text>
+                <Text> {randomEyes.common_name}</Text>
               ):[]}
             </View>
           </View>
@@ -161,7 +154,7 @@ const App = () => {
             </View>
             <View style={styles.generatedOutput}>
               {randomNose ? (
-                <Text> {randomNose}</Text>
+                <Text> {randomNose.common_name}</Text>
               ):[]}
             </View>
           </View>
@@ -177,7 +170,7 @@ const App = () => {
             </View>
             <View style={styles.generatedOutput}>
               {randomLegs ? (
-                <Text> {randomLegs}</Text>
+                <Text> {randomLegs.common_name}</Text>
               ):[]}
             </View>
           </View>
@@ -193,7 +186,7 @@ const App = () => {
             </View>
             <View style={styles.generatedOutput}>
               {randomFeet ? (
-                  <Text> {randomFeet}</Text>
+                  <Text> {randomFeet.common_name}</Text>
               ):[]}
             </View>
           </View>
@@ -209,7 +202,7 @@ const App = () => {
             </View>
             <View style={styles.generatedOutput}>
               {randomTail ? (
-                <Text> {randomTail}</Text>
+                <Text> {randomTail.common_name}</Text>
               ):[]}
             </View>
           </View>
@@ -225,7 +218,7 @@ const App = () => {
             </View>
             <View style={styles.generatedOutput}>
               {randomCoat ? (
-                <Text> {randomCoat}</Text>
+                <Text> {randomCoat.common_name}</Text>
               ):[]}
             </View>
           </View>
@@ -241,7 +234,7 @@ const App = () => {
             </View>
             <View style={styles.generatedOutput}>
               {randomColor ? (
-                <Text> {randomColor}</Text>
+                <Text> {randomColor.common_name}</Text>
               ):[]}
             </View>
           </View>
