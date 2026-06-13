@@ -1,6 +1,6 @@
-import { StatusBar } from 'expo-status-bar';
+import {StatusBar} from 'expo-status-bar';
 import {useState} from 'react';
-import { StyleSheet, Text, View, Button, Image} from 'react-native';
+import {StyleSheet, Text, View, Button, Image, ScrollView} from 'react-native';
 import animals from 'creature-app/animals.json';
 
 const App = () => {
@@ -61,6 +61,30 @@ const App = () => {
     const randomIndex = Math.floor(Math.random() * extras.length);
     setRandomExtras(extras[randomIndex]);
   }
+
+  {/* Simpler Animal Row Function */}
+  const AnimalRow = ({label, animal, generateFunc}) => (
+    <View style={styles.buttonRow}>
+      <View style={{width: '120'}}>
+        <Button
+          title={label}
+          onPress={generateFunc}
+          color="#88b65e"
+        />
+      </View>
+      <View style={styles.generatedOutput}>
+        {animal ? (
+          <Text> {animal.common_name}</Text>
+        ):[]}
+      </View>
+      <View>
+        <Image
+          source={{ uri: animal.image_square_url }}
+        />
+      </View>
+    </View>
+  );
+
   return (
     <>
       {/* Main Container */}
@@ -72,233 +96,32 @@ const App = () => {
           </Text>
         </View>
 
-        {/* Buttons */}
+        {/* All Buttons */}
         <View style={styles.buttonContainer}>
-          {/* Base Creature Button */}
-          <View style={styles.buttonRow}>
-            <View>
-              <Button 
-                title = "Base Creature"
-                onPress={generateBase}
-                color = "#88b65e"
-              />
+          <ScrollView style={styles.rowsContainer} contentContainerStyle={{paddingVertical: 4}}>
+            {/* Buttons with Images */}
+            <AnimalRow label="Base Creature" animal={randomBase} generateFunc={generateBase} />
+            <AnimalRow label="Head" animal={randomHead} generateFunc={generateHead} />
+            <AnimalRow label="Ears" animal={randomEars} generateFunc={generateEars} />
+            <AnimalRow label="Eyes" animal={randomEyes} generateFunc={generateEyes} />
+            <AnimalRow label="Nose" animal={randomNose} generateFunc={generateNose} />
+            <AnimalRow label="Legs" animal={randomLegs} generateFunc={generateLegs} />
+            <AnimalRow label="Feet" animal={randomFeet} generateFunc={generateFeet} />
+            <AnimalRow label="Tail" animal={randomTail} generateFunc={generateTail} />
+            <AnimalRow label="Color" animal={randomColor} generateFunc={generateColor} />
+            
+            {/* Extras Button (No Images) */}
+            <View style={styles.buttonRow}>
+              <View style={styles.buttonWrap}>
+                <Button title="Extras" onPress={generateExtras} color="#88b65e" />
+              </View>
+              <View style={styles.generatedOutput}>
+                {randomExtras ? <Text numberOfLines={1}>{randomExtras}</Text> : null}
+              </View>
+              <View style={styles.previewButton} />
             </View>
-            <View style={styles.generatedOutput}>
-              {randomBase ? (
-                <Text> {randomBase.common_name}</Text>
-              ):[]}
-            </View>
-            <View>
-              <Image
-                source={{ uri: randomBase.image_square_url }}
-              />
-            </View>
-          </View>
-        
-          {/* Head Button */}
-          <View style={styles.buttonRow}>
-            <View>
-              <Button
-                title = "Head"
-                onPress={generateHead}
-                color = "#88b65e"
-              />
-            </View>
-            <View style={styles.generatedOutput}>
-              {randomHead ? (
-                <Text> {randomHead.common_name}</Text>
-              ):[]}
-            </View>
-            <View>
-              <Image
-                source={{ uri: randomHead.image_square_url }}
-              />
-            </View>
-          </View>
-        
-          {/* Ears Button */}
-          <View style={styles.buttonRow}>
-            <View>
-              <Button
-                title = "Ears"
-                onPress={generateEars}
-                color = "#88b65e"
-              />
-            </View>
-            <View style={styles.generatedOutput}>
-              {randomEars ? (
-                <Text> {randomEars.common_name}</Text>
-              ):[]}
-            </View>
-            <View>
-              <Image
-                source={{ uri: randomEars.image_square_url }}
-              />
-            </View>
-          </View>
-        
-          {/* Eyes Button */}
-          <View style={styles.buttonRow}>
-            <View>
-              <Button
-                title = "Eyes"
-                onPress={generateEyes}
-                color = "#88b65e"
-              />
-            </View>
-            <View style={styles.generatedOutput}>
-              {randomEyes ? (
-                <Text> {randomEyes.common_name}</Text>
-              ):[]}
-            </View>
-            <View>
-              <Image
-                source={{ uri: randomEyes.image_square_url }}
-              />
-            </View>
-          </View>
-        
-          {/* Nose Button */}
-          <View style={styles.buttonRow}>
-            <View>
-              <Button
-                title = "Nose"
-                onPress={generateNose}
-                color = "#88b65e"
-              />
-            </View>
-            <View style={styles.generatedOutput}>
-              {randomNose ? (
-                <Text> {randomNose.common_name}</Text>
-              ):[]}
-            </View>
-            <View>
-              <Image
-                source={{ uri: randomNose.image_square_url }}
-              />
-            </View>
-          </View>
-        
-          {/* Legs Button */}
-          <View style={styles.buttonRow}>
-            <View>
-              <Button
-                title = "Legs"
-                onPress={generateLegs}
-                color = "#88b65e"
-              />
-            </View>
-            <View style={styles.generatedOutput}>
-              {randomLegs ? (
-                <Text> {randomLegs.common_name}</Text>
-              ):[]}
-            </View>
-            <View>
-              <Image
-                source={{ uri: randomLegs.image_square_url }}
-              />
-            </View>
-          </View>
-        
-          {/* Feet Button */}
-          <View style={styles.buttonRow}>
-            <View>
-              <Button
-                title = "Feet"
-                onPress={generateFeet}
-                color = "#88b65e"
-              />
-            </View>
-            <View style={styles.generatedOutput}>
-              {randomFeet ? (
-                  <Text> {randomFeet.common_name}</Text>
-              ):[]}
-            </View>
-            <View>
-              <Image
-                source={{ uri: randomFeet.image_square_url }}
-              />
-            </View>
-          </View>
-        
-          {/* Tail Button */}
-          <View style={styles.buttonRow}>
-            <View>
-              <Button
-                title = "Tail"
-                onPress={generateTail}
-                color = "#88b65e"
-              />
-            </View>
-            <View style={styles.generatedOutput}>
-              {randomTail ? (
-                <Text> {randomTail.common_name}</Text>
-              ):[]}
-            </View>
-            <View>
-              <Image
-                source={{ uri: randomTail.image_square_url }}
-              />
-            </View>
-          </View>
-        
-          {/* Coat Button */}
-          <View style={styles.buttonRow}>
-            <View>
-              <Button
-                title = "Coat"
-                onPress={generateCoat}
-                color = "#88b65e"
-              />
-            </View>
-            <View style={styles.generatedOutput}>
-              {randomCoat ? (
-                <Text> {randomCoat.common_name}</Text>
-              ):[]}
-            </View>
-            <View>
-              <Image
-                source={{ uri: randomCoat.image_square_url }}
-              />
-            </View>
-          </View>
-        
-          {/* Color Button */}
-          <View style={styles.buttonRow}>
-            <View>
-              <Button
-                title = "Color"
-                onPress={generateColor}
-                color = "#88b65e"
-              />
-            </View>
-            <View style={styles.generatedOutput}>
-              {randomColor ? (
-                <Text> {randomColor.common_name}</Text>
-              ):[]}
-            </View>
-            <View>
-              <Image
-                source={{ uri: randomColor.image_square_url }}
-              />
-            </View>
-          </View>
-
-          {/* Extras Button */}
-          <View style={styles.buttonRow}>
-            <View>
-              <Button
-                title = "Extras"
-                onPress={generateExtras}
-                color = "#88b65e"
-              />
-            </View>
-            <View style={styles.generatedOutput}>
-              {randomExtras ? (
-                <Text> {randomExtras}</Text>
-              ):[]}
-            </View>
-          </View>
+          
+          </ScrollView>
         </View>
         
         {/* Footer */}
@@ -342,7 +165,12 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   buttonContainer: {
-    border: 10,
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    width: '100%',
+    paddingHorizontal: 10,
+    gap: 12,
   },
   buttonRow: {
     display: 'flex',
@@ -355,6 +183,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     marginBottom: 10,
     borderRadius: 15,
+  },
+  rowsContainer: {
+    flex: 0,
+    flexShrink: 1,
   },
   generatedOutput: {
     padding:10,
