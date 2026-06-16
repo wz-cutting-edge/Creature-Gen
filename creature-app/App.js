@@ -1,6 +1,7 @@
 import {StatusBar} from 'expo-status-bar';
 import {useState} from 'react';
 import {StyleSheet, Text, View, Button, Image, ScrollView, TouchableOpacity} from 'react-native';
+import {SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import animals from 'creature-app/animals.json';
 
 const App = () => {
@@ -94,76 +95,82 @@ const App = () => {
   return (
     <>
       {/* Main Container */}
-      <View style={styles.mainContainer}>
-        {/* Webpage Title */}
-        <View style={styles.titleContainer}>
-          <Text style={styles.titleText}>
-            Random Chimera Maker
-          </Text>
-        </View>
+      <SafeAreaProvider>
+      <ScrollView style={styles.mainContainer} contentContainerStyle={styles.mainContainerContent}>
+        <SafeAreaView style={styles.safeArea}>
+        
+          {/* Webpage Title */}
+          <View style={styles.titleContainer}>
+            <Text style={styles.titleText}>
+              Random Chimera Maker
+            </Text>
+          </View>
 
-        <View style={styles.contentArea}>
+          <View style={styles.contentArea}>
 
-          {/* All Buttons */}
-          <ScrollView style={styles.rowsContainer} contentContainerStyle={{paddingVertical: 4}}>
-            {/* Buttons with Images */}
-            <AnimalRow label="Base Creature" animal={randomBase} generateFunc={generateBase} />
-            <AnimalRow label="Head" animal={randomHead} generateFunc={generateHead} />
-            <AnimalRow label="Ears" animal={randomEars} generateFunc={generateEars} />
-            <AnimalRow label="Eyes" animal={randomEyes} generateFunc={generateEyes} />
-            <AnimalRow label="Nose" animal={randomNose} generateFunc={generateNose} />
-            <AnimalRow label="Legs" animal={randomLegs} generateFunc={generateLegs} />
-            <AnimalRow label="Feet" animal={randomFeet} generateFunc={generateFeet} />
-            <AnimalRow label="Tail" animal={randomTail} generateFunc={generateTail} />
-            <AnimalRow label="Color" animal={randomColor} generateFunc={generateColor} />
-            
-            {/* Extras Button (No Images) */}
-            <View style={styles.buttonRow}>
-              <View style={styles.buttonWrap}>
-                <Button title="Extras" onPress={generateExtras} color="#88b65e" />
-              </View>
-              <View style={styles.generatedOutput}>
-                {randomExtras ? <Text numberOfLines={1}>{randomExtras}</Text> : null}
-              </View>
-              <View style={styles.previewButton} />
-            </View>
-          </ScrollView>
-
-          {/* Preview Panel */}
-          <View style={styles.previewPanel}>
-              {preview ? (
-                <>
-                  <Image
-                    source={{ uri: preview.url }}
-                    style={styles.previewImage}
-                    resizeMode="cover"
-                  />
-                  <Text style={styles.previewName}>{preview.name}</Text>
-                  <TouchableOpacity
-                    style={styles.closeButton}
-                    onPress={() => setPreview(null)}
-                  >
-                    <Text style={styles.closeButtonText}>Close</Text>
-                  </TouchableOpacity>
-                </>
-              ) : (
-                <View style={styles.previewPlaceholder}>
-                  <Text style={styles.previewPlaceholderText}>🔍</Text>
-                  <Text style={styles.previewPlaceholderLabel}>
-                    Press an animal's{'\n'}icon to preview
-                  </Text>
+            {/* All Buttons */}
+            <View style={styles.rowsContainer} contentContainerStyle={{paddingVertical: 4}}>
+              {/* Buttons with Images */}
+              <AnimalRow label="Base Creature" animal={randomBase} generateFunc={generateBase} />
+              <AnimalRow label="Head" animal={randomHead} generateFunc={generateHead} />
+              <AnimalRow label="Ears" animal={randomEars} generateFunc={generateEars} />
+              <AnimalRow label="Eyes" animal={randomEyes} generateFunc={generateEyes} />
+              <AnimalRow label="Nose" animal={randomNose} generateFunc={generateNose} />
+              <AnimalRow label="Legs" animal={randomLegs} generateFunc={generateLegs} />
+              <AnimalRow label="Feet" animal={randomFeet} generateFunc={generateFeet} />
+              <AnimalRow label="Tail" animal={randomTail} generateFunc={generateTail} />
+              <AnimalRow label="Color" animal={randomColor} generateFunc={generateColor} />
+              
+              {/* Extras Button (No Images) */}
+              <View style={styles.buttonRow}>
+                <View style={styles.buttonWrap}>
+                  <Button title="Extras" onPress={generateExtras} color="#88b65e" />
                 </View>
-              )}
+                <View style={styles.generatedOutput}>
+                  {randomExtras ? <Text numberOfLines={1}>{randomExtras}</Text> : null}
+                </View>
+                <View style={styles.previewButton} />
+              </View>
             </View>
-        </View>
 
-        {/* Footer */}
+            {/* Preview Panel */}
+            <View style={styles.previewPanel}>
+                {preview ? (
+                  <>
+                    <Image
+                      source={{ uri: preview.url }}
+                      style={styles.previewImage}
+                      resizeMode="contain"
+                    />
+                    <Text style={styles.previewName}>{preview.name}</Text>
+                    <TouchableOpacity
+                      style={styles.closeButton}
+                      onPress={() => setPreview(null)}
+                    >
+                      <Text style={styles.closeButtonText}>Close</Text>
+                    </TouchableOpacity>
+                  </>
+                ) : (
+                  <View style={styles.previewPlaceholder}>
+                    <Text style={styles.previewPlaceholderText}>🔍</Text>
+                    <Text style={styles.previewPlaceholderLabel}>
+                      Press an animal's{'\n'}icon to preview
+                    </Text>
+                  </View>
+                )}
+              </View>
+          </View>
+          
+        </SafeAreaView>
+      </ScrollView>
+      
+      {/* Footer */}
         <View style={styles.footer}>
           <Text style={styles.footerText}>
             ©2026 FP, Inc. - All Rights Reserved
           </Text>
         </View>
-      </View>
+      </SafeAreaProvider>
     </>
   );
 }
@@ -176,11 +183,18 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: 'beige',
     display: 'flex',
+  },
+  mainContainerContent: {
+    flexDirection: 'column',
+    width: '100%',
+  },
+  safeArea: {
+    width: '100%',
+    display: 'flex',
     alignItems: 'row',
   },
   titleContainer: {
     width: '100%',
-    margin: '0 auto',
     display: 'flex',
     alignItems: 'center',
     marginTop: 10,
