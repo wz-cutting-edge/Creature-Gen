@@ -1,6 +1,6 @@
 import {StatusBar} from 'expo-status-bar';
 import {useState} from 'react';
-import {StyleSheet, Text, View, Button, Image, ScrollView} from 'react-native';
+import {StyleSheet, Text, View, Button, Image, ScrollView, TouchableOpacity} from 'react-native';
 import animals from 'creature-app/animals.json';
 
 const App = () => {
@@ -25,6 +25,8 @@ const App = () => {
     "Fluffy Cheeks", "Fluffy Ears", "Colourful Spots", "Colourful Stripes", "Tusks", "Roe Deer Antlers", "Slime",
     "Ankole Watusi Horns", "Gills", "Anglerfish Lure", "Crest Feathers", "None"
   ];
+
+  const [preview, setPreview] = useState(null);
   
   const generateBase = () =>{
     setRandomBase(animals[Math.floor(Math.random() * animals.length)]);
@@ -65,7 +67,7 @@ const App = () => {
   {/* Simpler Animal Row Function */}
   const AnimalRow = ({label, animal, generateFunc}) => (
     <View style={styles.buttonRow}>
-      <View style={{width: '120'}}>
+      <View style={{width: 120}}>
         <Button
           title={label}
           onPress={generateFunc}
@@ -73,15 +75,19 @@ const App = () => {
         />
       </View>
       <View style={styles.generatedOutput}>
-        {animal ? (
-          <Text> {animal.common_name}</Text>
-        ):[]}
+        {animal ? <Text> {animal.common_name}</Text> : null}
       </View>
-      <View>
-        <Image
-          source={{ uri: animal.image_square_url }}
-        />
-      </View>
+      {/* Image Preview Button (Only if animal generated) */}
+      {animal ? (
+        <TouchableOpacity style={styles.previewButton} 
+        onPress={() => setPreview({url: animal.image_url, name: animal.common_name})}
+        accessibilityLabel={`Preview of ${animal.common_name}`}
+        >
+          <Text style={{fontSize: 18}}>🔍</Text>
+        </TouchableOpacity>
+      ) : (
+        <View style={styles.previewButton} />
+      )}
     </View>
   );
 
@@ -96,8 +102,9 @@ const App = () => {
           </Text>
         </View>
 
-        {/* All Buttons */}
-        <View style={styles.buttonContainer}>
+        <View style={styles.contentArea}>
+
+          {/* All Buttons */}
           <ScrollView style={styles.rowsContainer} contentContainerStyle={{paddingVertical: 4}}>
             {/* Buttons with Images */}
             <AnimalRow label="Base Creature" animal={randomBase} generateFunc={generateBase} />
@@ -120,10 +127,36 @@ const App = () => {
               </View>
               <View style={styles.previewButton} />
             </View>
-          
           </ScrollView>
+
+          {/* Preview Panel */}
+          <View style={styles.previewPanel}>
+              {preview ? (
+                <>
+                  <Image
+                    source={{ uri: preview.url }}
+                    style={styles.previewImage}
+                    resizeMode="cover"
+                  />
+                  <Text style={styles.previewName}>{preview.name}</Text>
+                  <TouchableOpacity
+                    style={styles.closeButton}
+                    onPress={() => setPreview(null)}
+                  >
+                    <Text style={styles.closeButtonText}>Close</Text>
+                  </TouchableOpacity>
+                </>
+              ) : (
+                <View style={styles.previewPlaceholder}>
+                  <Text style={styles.previewPlaceholderText}>🔍</Text>
+                  <Text style={styles.previewPlaceholderLabel}>
+                    Press an animal's{'\n'}icon to preview
+                  </Text>
+                </View>
+              )}
+            </View>
         </View>
-        
+
         {/* Footer */}
         <View style={styles.footer}>
           <Text style={styles.footerText}>
@@ -143,13 +176,16 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: 'beige',
     display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    justifyContent: 'column',
+    alignItems: 'row',
   },
   titleContainer: {
+    maxWidth: 400,
+    margin: '0 auto',
     display: 'flex',
     justifyContent: 'center',
     marginTop: 10,
+    marginBottom: 10,
   },
   titleText: {
     backgroundColor: '#88b65e',
@@ -164,12 +200,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 15,
   },
-  buttonContainer: {
+  contentArea: {
     flex: 1,
-    flexDirection: 'column',
+    flexDirection: 'row',
     alignItems: 'flex-start',
-    width: '100%',
-    paddingHorizontal: 10,
+    paddingHorizontal: 150,
     gap: 12,
   },
   buttonRow: {
@@ -177,18 +212,55 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flexDirection: 'row',
     alignItems: 'center',
-    width: 400,
     height: 54,
     padding: 10,
     backgroundColor: 'white',
     marginBottom: 10,
     borderRadius: 15,
   },
+  previewButton: {
+    width: 30,
+    height: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  previewPanel: {
+    width: '45%',
+    backgroundColor: 'white',
+    borderRadius: 16,
+    padding: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'flex-start',
+  },
+  previewImage: {
+    width: '100%',
+    aspectRatio: 1,
+    borderRadius: 12,
+    marginBottom: 10,
+  },
+  previewName: {
+    fontSize: 16,
+    fontWeight: '600',
+    textAlign: 'center',
+    marginBottom: 10,
+    color: '#333',
+  },
+  closeButton: {
+    backgroundColor: '#88b65e',
+    paddingVertical: 6,
+    paddingHorizontal: 18,
+    borderRadius: 20,
+  },
+  closeButtonText: {
+    color: 'white',
+    fontWeight: '600',
+  },
   rowsContainer: {
-    flex: 0,
-    flexShrink: 1,
+    flex: 1,
   },
   generatedOutput: {
+    flex: 1,
     padding:10,
   },
   outputDisplay: {
@@ -196,6 +268,22 @@ const styles = StyleSheet.create({
     padding:20,
     borderColor: 'black',
     borderRadius: 5,
+  },
+  buttonWrap: {
+    width: 120,
+  },
+  previewPlaceholder: {
+    alignItems: 'center',
+    gap: 8,
+  },
+  previewPlaceholderText: {
+    fontSize: 36,
+    opacity: 0.3,
+  },
+  previewPlaceholderLabel: {
+    textAlign: 'center',
+    color: '#aaa',
+    fontSize: 13,
   },
   footer: {
     width: '100%',
